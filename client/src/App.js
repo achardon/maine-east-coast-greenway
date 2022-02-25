@@ -15,19 +15,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Page Count: {count} </h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>East Coast Greenway</h1>
+        <h2>MAINE</h2>
+        <img src='https://www.greenway.org/uploads/attachments/cjyrp94jb215v00qiah4vmdr9-me.0.0.1522.1522.full.png' alt="maine map" />
+        <p>Page Count: {count} </p>
       </header>
     </div>
   );
