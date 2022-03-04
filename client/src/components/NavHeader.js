@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
 
 function NavHeader() {
 
@@ -21,8 +22,11 @@ function NavHeader() {
           <Navbar.Text>
             Signed in as: <a href="#login">Alessandra Chardon</a>
           </Navbar.Text>
+          <div style={{padding: "10px"}}>
+            <Button>Sign In</Button>
+            <Button>Log Out</Button>
+          </div>
         </Navbar.Collapse>
-
       </Container>
     </Navbar>
   );
