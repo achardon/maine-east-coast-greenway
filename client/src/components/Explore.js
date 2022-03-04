@@ -38,7 +38,7 @@ function Explore() {
             <Card.Body>
                 <Card.Title>Bangor</Card.Title>
                 <Card.Text>
-                Bangor, Maine, is a growing city with a small-town feel that was recently named one of the coolest towns in America and a top place to live. 
+                Bangor is a growing city with a small-town feel that was recently named one of the coolest towns in America and a top place to live. 
                 </Card.Text>
                 <Button variant="primary">Tell Me More!</Button>
             </Card.Body>
