@@ -6,7 +6,6 @@ import NavHeader from './components/NavHeader';
 import About from './components/About';
 import Explore from './components/Explore';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
