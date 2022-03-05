@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 
 function NavHeader() {
+
+  const [user, setUser] = useState('')
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -19,12 +21,9 @@ function NavHeader() {
 
         <Navbar.Collapse className="justify-content-end">
           {/* need to eventually change this to show log in button when no one is logged in */}
-          <Navbar.Text>
-            Signed in as: <a href="#login">Alessandra Chardon</a>
-          </Navbar.Text>
+          {user? <Navbar.Text>Signed in as: <a href="#login">{user}</a></Navbar.Text> : null}
           <div style={{padding: "10px"}}>
-            <Button>Sign In</Button>
-            <Button>Log Out</Button>
+            {user? <Button>Log Out</Button> : <Button>Sign In</Button>}
           </div>
         </Navbar.Collapse>
       </Container>
