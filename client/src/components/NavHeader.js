@@ -3,10 +3,18 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from "react-router-dom";
+
 
 function NavHeader() {
 
   const [user, setUser] = useState('')
+  let navigate = useNavigate()
+
+  function handleLogIn() {
+    console.log('clicked sign in')
+    navigate(`/login`)
+  }
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -23,7 +31,7 @@ function NavHeader() {
           {/* need to eventually change this to show log in button when no one is logged in */}
           {user? <Navbar.Text>Signed in as: <a href="#login">{user}</a></Navbar.Text> : null}
           <div style={{padding: "10px"}}>
-            {user? <Button>Log Out</Button> : <Button>Sign In</Button>}
+            {user? <Button>Log Out</Button> : <Button onClick={handleLogIn}>Log In</Button>}
           </div>
         </Navbar.Collapse>
       </Container>

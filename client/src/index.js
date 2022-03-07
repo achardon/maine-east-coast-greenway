@@ -7,6 +7,7 @@ import About from './components/About';
 import Explore from './components/Explore';
 import MyTrips from './components/MyTrips';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/explore" element={<Explore />}></Route>
         <Route path="/my_trips" element={<MyTrips />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
