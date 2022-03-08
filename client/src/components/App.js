@@ -13,11 +13,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
 
   const [count, setCount] = useState(0);
-  const [user, setUser] = useState({
-    id: '',
-    username: '',
-    password_digest: ''
-  });
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   useEffect(() => {
     fetch ("/hello")
@@ -27,7 +32,7 @@ function App() {
 
   return (
     <div>
-        <NavHeader user={user} />
+        <NavHeader user={user} setUser={setUser}/>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>

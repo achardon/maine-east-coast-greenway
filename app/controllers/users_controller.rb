@@ -10,7 +10,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def show
         user = User.find(session[:user_id])
-        byebug
         render json: user
     end
 

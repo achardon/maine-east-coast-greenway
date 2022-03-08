@@ -6,12 +6,19 @@ import Button from 'react-bootstrap/Button'
 import { useNavigate } from "react-router-dom";
 
 
-function NavHeader( {user} ) {
+function NavHeader( {user, setUser} ) {
 
   let navigate = useNavigate()
 
   function handleLogIn() {
     navigate(`/log_in`)
+  }
+
+  function handleLogOut() {
+    fetch("/logout", {
+      method: "DELETE"
+    })
+    .then(setUser(null))
   }
 
   return (
@@ -27,9 +34,9 @@ function NavHeader( {user} ) {
 
         <Navbar.Collapse className="justify-content-end">
           {/* need to eventually change this to show log in button when no one is logged in */}
-          {user.username? <Navbar.Text>Signed in as: <a href="#login">{user.username}</a></Navbar.Text> : null}
+          {user? <Navbar.Text>Signed in as: <a href="#login">{user.username}</a></Navbar.Text> : null}
           <div style={{padding: "10px"}}>
-            {user.username? <Button>Log Out</Button> : <Button onClick={handleLogIn}>Log In</Button>}
+            {user? <Button onClick={handleLogOut}>Log Out</Button> : <Button onClick={handleLogIn}>Log In</Button>}
           </div>
         </Navbar.Collapse>
       </Container>

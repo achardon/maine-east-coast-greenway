@@ -35,7 +35,14 @@ function Login( { user, setUser } ) {
       body: JSON.stringify(form)
     })
     .then(r => r.json())
-    .then(data => setUser(data))
+    .then(data => {
+      console.log(data)
+      setUser(data)
+      setForm({
+        username: "",
+        password: "",
+      });
+    })
   }
 
   return (
