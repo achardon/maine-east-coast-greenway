@@ -1,6 +1,14 @@
-// import './App.css';
 import { useState, useEffect} from "react";
+import { Routes, Route } from "react-router-dom";
+import NavHeader from "./NavHeader";
+import Home from "./Home";
 import About from "./About";
+import Explore from "./Explore";
+import MyTrips from "./MyTrips";
+import Login from "./Login";
+import Signup from "./Signup";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
 
@@ -13,17 +21,18 @@ function App() {
   }, [])
 
   return (
-      <div>
-        <div className="jumbotron text-center" style={{ padding: '40px' }}>
-            <h1>East Coast Greenway</h1>
-            <h2 style={{ padding: '10px' }}>MAINE </h2>
-            <img src='https://www.greenway.org/uploads/attachments/cjyrp94jb215v00qiah4vmdr9-me.0.0.1522.1522.full.png' alt="maine map" style={{ padding: '40px' }} />
-            <h4>An app developed by Alessandra Chardon</h4>
-            {/* <h3>Purpose: CLAP Family Bike Trip 2022! </h3>
-            <p>Page Count: {count} </p> */}
-        </div>
-      </div>
+    <div>
+        <NavHeader />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/explore" element={<Explore />}></Route>
+          <Route path="/my_trips" element={<MyTrips />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+        </Routes>
 
+    </div>
   );
 }
 
