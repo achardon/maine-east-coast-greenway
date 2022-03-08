@@ -34,14 +34,24 @@ function Login( { user, setUser } ) {
       },
       body: JSON.stringify(form)
     })
-    .then(r => r.json())
+    .then(r => {
+      if (r.ok) {
+        r.json().then(data => {
+          console.log(data)
+          setUser(data)
+          setForm({
+            username: "",
+            password: "",
+          });
+        })
+        navigate(`/`)
+      }
+      else {
+        r.json().then(error => alert(error.error))
+      }
+    })
+    
     .then(data => {
-      console.log(data)
-      setUser(data)
-      setForm({
-        username: "",
-        password: "",
-      });
     })
   }
 
