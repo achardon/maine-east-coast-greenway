@@ -10,7 +10,7 @@ function Signup() {
   let navigate = useNavigate();
 
   function handleSignIn() {
-    navigate(`/login`);
+    navigate(`/log_in`);
   }
 
   return (

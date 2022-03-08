@@ -13,7 +13,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
 
   const [count, setCount] = useState(0);
-  
+  const [user, setUser] = useState({
+    id: '',
+    username: '',
+    password_digest: ''
+  });
+
   useEffect(() => {
     fetch ("/hello")
     .then(r => r.json())
@@ -22,14 +27,14 @@ function App() {
 
   return (
     <div>
-        <NavHeader />
+        <NavHeader user={user} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/explore" element={<Explore />}></Route>
           <Route path="/my_trips" element={<MyTrips />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/log_in" element={<Login user={user} setUser={setUser}/>}></Route>
+          <Route path="/sign_up" element={<Signup />}></Route>
         </Routes>
 
     </div>
