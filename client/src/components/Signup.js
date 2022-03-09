@@ -64,7 +64,7 @@ function Signup( {setUser} ) {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             name="password"
             placeholder="Enter Password"
             onChange={handleChange}
@@ -74,7 +74,7 @@ function Signup( {setUser} ) {
         <Form.Group className="mb-3" controlId="formBasicPasswordConfirmation">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             name="password_confirmation"
             placeholder="Confirm Password"
             onChange={handleChange}
@@ -86,12 +86,6 @@ function Signup( {setUser} ) {
         </Button>
       </Form>
 
-      <Container style={{ padding: "40px" }} className="text-center">
-        <h3 style={{ padding: "10px" }}>Already have an account?</h3>
-        <Button onClick={handleSignIn} variant="info">
-          Log In
-        </Button>
-      </Container>
     </Container>
   );
 }

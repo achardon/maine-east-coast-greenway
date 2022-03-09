@@ -74,7 +74,7 @@ function Login( { user, setUser } ) {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="test"
+            type="password"
             name="password"
             placeholder="Enter Password"
             onChange={handleChange}
