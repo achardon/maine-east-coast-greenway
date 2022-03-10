@@ -20,6 +20,8 @@ brun = Place.create(name: "Brunswick", location: 93, description: "Brunswick is 
 
 
 #Accommodations
+heml = kenn.accommodations.create(name: "Hemlock Grove Campground", type: "campground", address: "1299 Portland Road, Arundel, ME 04046", distance_from_route: 2, description: "This campground sits on 32+ aces and has 75 sites, a store, rec hall, game room, laundry room, bathhouse, playground, and playhouse. Rates are between $47-$62 per night.")
+sand = kenn.accommodations.create(name: "Sandy Pines Campground", type: "campground", address: "277 Mills Road, Kennebunkport, ME 04046", distance_from_route: 6, description: "This campground offers some of the best RV campsites, highly rated glamping tents, and an array of camp cottages and unique retreats you won’t find anywhere else.")
 
 
 #Attractions
