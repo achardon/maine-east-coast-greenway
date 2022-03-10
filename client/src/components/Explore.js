@@ -2,16 +2,23 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Stack from 'react-bootstrap/Stack'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import PlaceCard from './PlaceCard'
 
-function Explore() {
+function Explore( {places} ) {
   return (
     <Container style={{ padding: '40px' }} className="text-center">
         <h1>Explore</h1>
 
-        <Stack direction="horizontal" gap={3} style={{ padding: '40px' }}>
-
-        <Card style={{ width: '30rem' }}>
+        <Container>
+            <Col>
+                <Row>
+                    {places.map(place => <PlaceCard key={place.id} place={place}/>)}
+                </Row>
+            </Col>
+        </Container>
+        {/* <Card style={{ width: '30rem' }}>
             <Card.Img variant="top" src="https://maineguide.com/images/kittery.gif" />
             <Card.Body>
                 <Card.Title>Kittery</Card.Title>
@@ -42,9 +49,8 @@ function Explore() {
                 </Card.Text>
                 <Button variant="primary">Tell Me More!</Button>
             </Card.Body>
-        </Card>
+        </Card> */}
 
-        </Stack>
     </Container>
   )
 }
