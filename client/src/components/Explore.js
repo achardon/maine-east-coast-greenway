@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row'
 import PlaceCard from './PlaceCard'
 
 function Explore( {places} ) {
+
+
   return (
     <Container style={{ padding: '40px' }} className="text-center">
         <h1>Explore</h1>
@@ -14,7 +16,7 @@ function Explore( {places} ) {
         <Container>
             <Col>
                 <Row>
-                    {places.map(place => <PlaceCard key={place.id} place={place}/>)}
+                    {places.map(place => <PlaceCard key={place.id} place={place} />)}
                 </Row>
             </Col>
         </Container>
