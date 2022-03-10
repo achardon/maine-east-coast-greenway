@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_10_203726) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_212908) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_203726) do
     t.index ["place_id"], name: "index_attractions_on_place_id"
   end
 
+  create_table "days", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.date "day"
+    t.integer "mileage"
+    t.string "notes"
+    t.string "start_point"
+    t.string "end_point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_days_on_trip_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.integer "location"
@@ -45,6 +57,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_203726) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.string "image"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_203726) do
 
   add_foreign_key "accommodations", "places"
   add_foreign_key "attractions", "places"
+  add_foreign_key "days", "trips"
+  add_foreign_key "trips", "users"
 end

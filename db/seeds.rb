@@ -25,3 +25,12 @@ sand = kenn.accommodations.create(name: "Sandy Pines Campground", category: "cam
 
 
 #Attractions
+
+#Users
+ac = User.create(username:"Alessandra", password:"bikeforever")
+
+#Trips
+
+sample_trip = ac.trips.create(name: "Sample Trip", start_date: "2022-06-01", end_date: "2022-06-05")
+
+#Days
