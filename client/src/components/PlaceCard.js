@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function PlaceCard( { place } ) {
+function PlaceCard( { place, accommodations } ) {
 
     const [breweries, setBreweries] = useState([])
     const [details, setDetails] = useState(false)
@@ -18,6 +18,8 @@ function PlaceCard( { place } ) {
     function handleClick() {
         setDetails(!details)
     }
+    
+    const accomms = accommodations.filter(a => a.place.id === place.id)
 
   return (
     <>
@@ -32,6 +34,11 @@ function PlaceCard( { place } ) {
           </Button>
           {details ? (
             <Card.Text>
+              <strong>Accommodations in this Town: </strong>
+              {accomms.map((a) => (
+                <li key={a.id}>{a.name}</li>
+              ))}
+              {accomms.length === 0? <li>No information available</li> : null}
               <strong>Breweries in this Town:</strong>
               {breweries.map((b) => (
                 <li key={b.id}>{b.name}</li>

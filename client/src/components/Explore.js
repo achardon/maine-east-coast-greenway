@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import PlaceCard from './PlaceCard'
 
-function Explore( {places} ) {
+function Explore( {places, accommodations} ) {
 
 
   return (
@@ -16,7 +16,7 @@ function Explore( {places} ) {
         <Container>
             <Col>
                 <Row>
-                    {places.map(place => <PlaceCard key={place.id} place={place} />)}
+                    {places.map(place => <PlaceCard key={place.id} place={place} accommodations={accommodations}/>)}
                 </Row>
             </Col>
         </Container>
