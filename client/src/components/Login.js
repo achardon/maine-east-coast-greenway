@@ -26,7 +26,6 @@ function Login( { user, setUser } ) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('clicked Sign in')
     fetch('/login', {
       method: "POST",
       headers: {
@@ -49,9 +48,6 @@ function Login( { user, setUser } ) {
       else {
         r.json().then(error => alert(error.error))
       }
-    })
-    
-    .then(data => {
     })
   }
 

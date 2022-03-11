@@ -4,7 +4,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def index
-        render json: Trip.all
+        user = User.find(session[:user_id])
+        render json: user.trips
     end
 
     def show
