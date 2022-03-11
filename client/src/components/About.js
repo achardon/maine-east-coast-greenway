@@ -33,7 +33,7 @@ function About() {
         This app focuses on the Maine portion of the East Coast Greenway. Use
         this app to explore the places along the route in Maine and decide where
         you want to plan your adventure. Create an account in order to plan your
-        trip using our planning tool.
+        trip using our planning tool. Please note that this app uses the complementary coastal route to plan a trip and to calculate mileages.
       </h5>
     </Container>
   );

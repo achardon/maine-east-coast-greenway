@@ -1,19 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import NewTripForm from './NewTripForm'
 
 function MyTrips() {
+
+  const [addingTrip, setAddingTrip] = useState(false)
+
+  function createTrip(newTrip) {
+    setAddingTrip(false)
+    fetch('/trips', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newTrip)
+    })
+    .then(r => r.json())
+    .then(data => console.log(data))
+  }
+
+  function handleCreateNewTrip() {
+    setAddingTrip(!addingTrip)
+  }
+
   return (
     <Container style={{ padding: "40px" }} className="text-center">
       <h1>My Trips</h1>
 
         <div style={{ padding: "40px" }}>
-            <Button>Create New Trip</Button>
+            {addingTrip ? null : <Button onClick={handleCreateNewTrip}>Create New Trip</Button>}
+            {addingTrip ? <NewTripForm createTrip={createTrip}/> : null}
         </div>
 
       <div style={{ padding: "40px" }}>
-        <h3>Sample Trip</h3>
+        <h3>Example</h3>
 
         <Table striped bordered hover>
           <thead>
