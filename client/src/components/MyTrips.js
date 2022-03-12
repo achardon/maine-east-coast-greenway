@@ -43,7 +43,7 @@ function MyTrips() {
         {addingTrip ? <NewTripForm createTrip={createTrip} /> : null}
       </div>
 
-      {trips.map((trip) => <TripContainer trip={trip} />)}
+      {trips.length > 0 ? trips.map((trip) => <TripContainer key={trip.id} trip={trip} />) : null}
     </Container>
   );
 }
