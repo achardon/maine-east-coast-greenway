@@ -8,11 +8,16 @@ function MyTrips() {
 
   const [addingTrip, setAddingTrip] = useState(false)
   const [trips, setTrips] = useState([])
+  const [days, setDays] = useState([])
 
   useEffect(() => {
     fetch('/trips')
     .then(r => r.json())
     .then(data => setTrips(data))
+
+     fetch("/days")
+      .then((r) => r.json())
+      .then((data) => setDays(data));
   }, [])
 
   function createTrip(newTrip) {
@@ -43,7 +48,15 @@ function MyTrips() {
         {addingTrip ? <NewTripForm createTrip={createTrip} /> : null}
       </div>
 
-      {trips.length > 0 ? trips.map((trip) => <TripContainer key={trip.id} trip={trip} />) : null}
+      {trips.length > 0
+        ? trips.map((trip) => (
+            <TripContainer
+              key={trip.id}
+              trip={trip}
+              days={days.filter((d) => d.trip.id === trip.id)}
+            />
+          ))
+        : null}
     </Container>
   );
 }

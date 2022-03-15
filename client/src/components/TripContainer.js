@@ -2,8 +2,11 @@ import React from 'react'
 import Table from "react-bootstrap/Table";
 
 
-function TripContainer( {trip} ) {
+function TripContainer( {trip, days} ) {
   console.log(trip)
+  console.log(days)
+//   const tripDays = days.filter(d => d.trip.id === trip.id)
+//   console.log(tripDays)
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
   const hour = minute * 60;
@@ -16,27 +19,32 @@ function TripContainer( {trip} ) {
   let tripLength = Math.round(end / day) - Math.round(start / day) + 1
   console.log(tripLength)
 
-  function createDays() {
+  function createDay(day) {
       console.log(trip.name)
       //Why is this not returning the JSX below? The console log above works, but then no rows are on the page?
         //Should I be using .map? Do I need to turn the trip length into an array? 
         //Each trip should have objects called days - then you can map over the days to create new rows. 
+        const date = new Date(day.day)
+        const dateFormatted = date.toDateString()
+        console.log(dateFormatted)
             return (
               <tr>
-                <td>1</td>
-                <td>Kittery</td>
-                <td>Kennebunk</td>
-                <td>37</td>
+                <td>
+                  {dateFormatted}
+                </td>
+                <td>{day.start_point}</td>
+                <td>{day.end_point}</td>
+                <td>{day.mileage}</td>
               </tr>
-            )
+            );
     
   }
 
-  function createTable() {
-          for (let i = 0; i < tripLength; i++) {
-              createDays()
-          }
-  }
+//   function createTable() {
+//           for (let i = 0; i < tripLength; i++) {
+//               createDay()
+//           }
+//   }
 
   return (
     <div style={{ padding: "40px" }}>
@@ -45,32 +53,14 @@ function TripContainer( {trip} ) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Day #</th>
+            <th>Day</th>
             <th>Start Point</th>
             <th>End Point</th>
             <th>Mileage</th>
           </tr>
         </thead>
         <tbody>
-            {createTable()}
-          {/* <tr>
-            <td>1</td>
-            <td>Kittery</td>
-            <td>Kennebunk</td>
-            <td>37</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Kennebunk</td>
-            <td>Portland</td>
-            <td>30</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Portland</td>
-            <td>Freeport</td>
-            <td>18</td>
-          </tr> */}
+            {days.map(day => createDay(day))}
         </tbody>
       </Table>
     </div>
