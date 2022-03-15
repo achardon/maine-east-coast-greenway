@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import NewTripForm from './NewTripForm'
 import TripContainer from './TripContainer'
 
-function MyTrips() {
+function MyTrips( {user} ) {
 
   const [addingTrip, setAddingTrip] = useState(false)
   const [trips, setTrips] = useState([])

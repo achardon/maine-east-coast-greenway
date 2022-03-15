@@ -19,6 +19,7 @@ function NavHeader( {user, setUser} ) {
       method: "DELETE"
     })
     .then(setUser(null))
+        navigate(`/`);
   }
 
   return (

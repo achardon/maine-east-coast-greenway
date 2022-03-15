@@ -3,8 +3,8 @@ import Table from "react-bootstrap/Table";
 
 
 function TripContainer( {trip, days} ) {
-  console.log(trip)
-  console.log(days)
+//   console.log(trip)
+//   console.log(days)
 //   const tripDays = days.filter(d => d.trip.id === trip.id)
 //   console.log(tripDays)
   // Calculate milliseconds in a day
@@ -17,16 +17,16 @@ function TripContainer( {trip, days} ) {
   const end = Date.parse(trip.end_date);
 
   let tripLength = Math.round(end / day) - Math.round(start / day) + 1
-  console.log(tripLength)
+//   console.log(tripLength)
 
   function createDay(day) {
-      console.log(trip.name)
+    //   console.log(trip.name)
       //Why is this not returning the JSX below? The console log above works, but then no rows are on the page?
         //Should I be using .map? Do I need to turn the trip length into an array? 
         //Each trip should have objects called days - then you can map over the days to create new rows. 
         const date = new Date(day.day)
         const dateFormatted = date.toDateString()
-        console.log(dateFormatted)
+        // console.log(dateFormatted)
             return (
               <tr>
                 <td>
