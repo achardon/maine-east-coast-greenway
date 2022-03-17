@@ -20,11 +20,12 @@ function TripContainer( {trip, days} ) {
 //   console.log(tripLength)
 
   function createDay(day) {
-    //   console.log(trip.name)
+      console.log(day.day)
       //Why is this not returning the JSX below? The console log above works, but then no rows are on the page?
         //Should I be using .map? Do I need to turn the trip length into an array? 
         //Each trip should have objects called days - then you can map over the days to create new rows. 
         const date = new Date(day.day)
+        console.log(date)
         const dateFormatted = date.toDateString()
         // console.log(dateFormatted)
             return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert'
 import { useNavigate } from "react-router-dom";
 
 
@@ -46,7 +47,11 @@ function Login( { user, setUser } ) {
         navigate(`/`)
       }
       else {
-        r.json().then(error => alert(error.error))
+        r.json().then(error => {
+          //this should be in JSX, need state to say if error message should be displayed.
+          // return <Alert variant={'danger'}>Test</Alert>
+          alert(error.error)
+        })
       }
     })
   }
@@ -54,6 +59,14 @@ function Login( { user, setUser } ) {
   return (
     <Container style={{ padding: "40px" }}>
       <h1>Login</h1>
+
+      {/* {[ 'primary', 'secondary', 'success', 'danger', 'warning',
+      'info', 'light', 'dark', ].map((variant, idx) => (
+      <Alert key={idx} variant={variant}>
+        This is a {variant} alert—check it out!
+      </Alert>
+      ))
+      } */}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -80,8 +93,8 @@ function Login( { user, setUser } ) {
         <Button variant="primary" type="submit">
           Log In
         </Button>
+      {/* <Alert variant={"danger"}>Test</Alert> */}
       </Form>
-
       <Container style={{ padding: "40px" }} className="text-center">
         <h3 style={{ padding: "10px" }}>Don't have an account?</h3>
         <Button onClick={handleCreateAccount} variant="info">

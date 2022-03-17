@@ -14,6 +14,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def create
         day = Day.create(day_params)
+        # byebug
         render json: day, status: :created
     end
 
