@@ -47,7 +47,7 @@ function MyTrips( {user} ) {
         )}
         {addingTrip ? <NewTripForm createTrip={createTrip} /> : null}
       </div>
-
+      
       {trips.length > 0
         ? trips.map((trip) => (
             <TripContainer
