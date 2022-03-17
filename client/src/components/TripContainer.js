@@ -7,7 +7,7 @@ import EditDay from './EditDay';
 
 function TripContainer( {trip, days} ) {
 
-    const [isEditing, setIsEditing] = useState(false);
+    // const [isEditing, setIsEditing] = useState(false);
 
 //   console.log(trip)
 //   console.log(days)
@@ -35,18 +35,11 @@ function TripContainer( {trip, days} ) {
         const dateFormatted = date.toDateString()
         // console.log(dateFormatted)
             return (
-              <>
-                {isEditing ? (
-                  <EditDay
-                    day={day}
-                    dateFormatted={dateFormatted}
-                  />
-                ) : (
+                <>
                   <DayContainer
                     day={day}
                     dateFormatted={dateFormatted}
                   />
-                )}
 
                 {/* <tr>
                     <td>
@@ -61,10 +54,6 @@ function TripContainer( {trip, days} ) {
     
   }
 
-    function handleEdit() {
-        setIsEditing(!isEditing)
-    }
-
 //   function createTable() {
 //           for (let i = 0; i < tripLength; i++) {
 //               createDay()
@@ -74,7 +63,7 @@ function TripContainer( {trip, days} ) {
   return (
     <div style={{ padding: "40px" }}>
       <h3>{trip.name}</h3>
-      {isEditing ? (
+      {/* {isEditing ? (
         <Button onClick={handleEdit} variant="secondary" size="sm">
           Done
         </Button>
@@ -82,7 +71,7 @@ function TripContainer( {trip, days} ) {
         <Button onClick={handleEdit} variant="secondary" size="sm">
           Edit
         </Button>
-      )}
+      )} */}
 
       <Table striped bordered hover>
         <thead>
