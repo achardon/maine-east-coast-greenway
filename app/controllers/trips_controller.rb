@@ -17,6 +17,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         user_id = session[:user_id]
         user = User.find(user_id)
         trip = user.trips.create(trip_params)
+        byebug
         render json: trip, status: :created
     end
 

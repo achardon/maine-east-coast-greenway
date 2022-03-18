@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_10_212908) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_18_140222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_212908) do
 
   create_table "days", force: :cascade do |t|
     t.bigint "trip_id", null: false
-    t.date "day"
+    t.datetime "day", precision: nil
     t.integer "mileage"
     t.string "notes"
     t.string "start_point"
@@ -62,8 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_212908) do
   create_table "trips", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date", precision: nil
+    t.datetime "end_date", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_trips_on_user_id"
