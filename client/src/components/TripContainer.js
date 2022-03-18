@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import EditDay from './EditDay';
 
 
-function TripContainer( {trip, days} ) {
+function TripContainer( {trip, days, deleteTrip, editDay} ) {
 
     // const [isEditing, setIsEditing] = useState(false);
 
@@ -39,6 +39,7 @@ function TripContainer( {trip, days} ) {
                   <DayContainer
                     day={day}
                     dateFormatted={dateFormatted}
+                    editDay={editDay}
                   />
 
                 {/* <tr>
@@ -63,6 +64,7 @@ function TripContainer( {trip, days} ) {
   return (
     <div style={{ padding: "40px" }}>
       <h3>{trip.name}</h3>
+      <Button onClick={() => deleteTrip(trip)}variant="danger" size="sm">Delete Trip</Button>
       {/* {isEditing ? (
         <Button onClick={handleEdit} variant="secondary" size="sm">
           Done

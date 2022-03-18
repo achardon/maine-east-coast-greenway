@@ -37,6 +37,38 @@ function MyTrips( {user} ) {
     setAddingTrip(!addingTrip)
   }
 
+  function deleteTrip(trip) {
+    console.log('delete trip')
+    console.log(trip)
+    fetch(`/trips/${trip.id}`, {
+      method: "DELETE"
+    })
+    .then(setTrips(trips.filter(t => t.id !== trip.id)))
+  }
+
+  function editDay(updatedDay) {
+    fetch(`/days/${updatedDay.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedDay),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+        const updatedDays = days.map(d => {
+          if (d.id === data.id) {
+            return data
+          }
+          else {
+            return d
+          }
+        })
+        setDays(updatedDays)
+      });
+  }
+
   return (
     <Container style={{ padding: "40px" }} className="text-center">
       <h1>My Trips</h1>
@@ -47,16 +79,20 @@ function MyTrips( {user} ) {
         )}
         {addingTrip ? <NewTripForm createTrip={createTrip} /> : null}
       </div>
-      
-      {trips.length > 0
-        ? trips.map((trip) => (
-            <TripContainer
-              key={trip.id}
-              trip={trip}
-              days={days.filter((d) => d.trip.id === trip.id)}
-            />
-          ))
-        : null}
+
+      {trips.length > 0 ? (
+        trips.map((trip) => (
+          <TripContainer
+            key={trip.id}
+            trip={trip}
+            deleteTrip={deleteTrip}
+            editDay={editDay}
+            days={days.filter((d) => d.trip.id === trip.id)}
+          />
+        ))
+      ) : (
+        <h2>You have no trips yet.</h2>
+      )}
     </Container>
   );
 }

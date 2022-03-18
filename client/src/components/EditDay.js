@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 
-function EditDay({ day, dateFormatted, handleEdit }) {
+function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
 
-    // console.log(day)
+    console.log(day)
     const [updatedDay, setUpdatedDay] = useState({
         id: day.id,
         day: day.day,
@@ -12,25 +12,30 @@ function EditDay({ day, dateFormatted, handleEdit }) {
         notes: day.notes
     })
 
-    // console.log(updatedDay)
+    console.log(updatedDay)
     
     function handleChange(e) {
         setUpdatedDay({...updatedDay, 
             [e.target.name]: e.target.value
         })
     }
+    
+    function handleEdit(updatedDay) {
+        editDay(updatedDay)
+        setEditMode(!editMode);
+    }
 
   return (
     <tr>
       <td>{dateFormatted}</td>
       <td>
-        <input value={day.start_point} name="start_point" onChange={handleChange} />
+        <input value={updatedDay.start_point} name="start_point" onChange={handleChange} />
       </td>
       <td>
-        <input value={day.end_point} name="end_point" onChange={handleChange} />
+        <input value={updatedDay.end_point} name="end_point" onChange={handleChange} />
       </td>
       <td>
-        <input value={day.mileage} name="mileage" onChange={handleChange} />
+        <input value={updatedDay.mileage} name="mileage" onChange={handleChange} />
       </td>
       <td>
         <button onClick={() => handleEdit(updatedDay)}>Done Editing</button>
