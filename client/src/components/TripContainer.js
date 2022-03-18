@@ -7,12 +7,6 @@ import EditDay from './EditDay';
 
 function TripContainer( {trip, days, deleteTrip, editDay} ) {
 
-    // const [isEditing, setIsEditing] = useState(false);
-
-//   console.log(trip)
-//   console.log(days)
-//   const tripDays = days.filter(d => d.trip.id === trip.id)
-//   console.log(tripDays)
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
   const hour = minute * 60;
@@ -25,7 +19,6 @@ function TripContainer( {trip, days, deleteTrip, editDay} ) {
   let tripLength = Math.round(end / day) - Math.round(start / day) + 1
 //   console.log(tripLength)
 
-  function createDay(day) {
     //   console.log(day.day)
       //Why is this not returning the JSX below? The console log above works, but then no rows are on the page?
         //Should I be using .map? Do I need to turn the trip length into an array? 
@@ -33,47 +26,13 @@ function TripContainer( {trip, days, deleteTrip, editDay} ) {
         const date = new Date(day.day)
         // console.log(date)
         const dateFormatted = date.toDateString()
-        // console.log(dateFormatted)
-            return (
-                <>
-                  <DayContainer
-                    day={day}
-                    dateFormatted={dateFormatted}
-                    editDay={editDay}
-                  />
-
-                {/* <tr>
-                    <td>
-                    {dateFormatted}
-                    </td>
-                    <td>{day.start_point}</td>
-                    <td>{day.end_point}</td>
-                    <td>{day.mileage}</td>
-                </tr> */}
-              </>
-            );
-    
-  }
-
-//   function createTable() {
-//           for (let i = 0; i < tripLength; i++) {
-//               createDay()
-//           }
-//   }
 
   return (
     <div style={{ padding: "40px" }}>
       <h3>{trip.name}</h3>
-      <Button onClick={() => deleteTrip(trip)}variant="danger" size="sm">Delete Trip</Button>
-      {/* {isEditing ? (
-        <Button onClick={handleEdit} variant="secondary" size="sm">
-          Done
-        </Button>
-      ) : (
-        <Button onClick={handleEdit} variant="secondary" size="sm">
-          Edit
-        </Button>
-      )} */}
+      <Button onClick={() => deleteTrip(trip)} variant="danger" size="sm">
+        Delete Trip
+      </Button>
 
       <Table striped bordered hover>
         <thead>
@@ -84,7 +43,7 @@ function TripContainer( {trip, days, deleteTrip, editDay} ) {
             <th>Mileage</th>
           </tr>
         </thead>
-        <tbody>{days.map((day) => createDay(day))}</tbody>
+        <tbody>{days.map((day) => <DayContainer key={day.id} day={day} editDay={editDay}/>)}</tbody>
       </Table>
     </div>
   );
