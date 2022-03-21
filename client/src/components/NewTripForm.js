@@ -8,7 +8,8 @@ function NewTripForm( { createTrip } ) {
     const [newTrip, setNewTrip] = useState({
         name: "",
         start_date: "",
-        end_date: ""
+        end_date: "",
+        days_attributes: []
     })
 
     function handleChange(e) {

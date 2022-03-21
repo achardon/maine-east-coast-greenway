@@ -20,10 +20,21 @@ function MyTrips( {user} ) {
       .then((data) => setDays(data));
   }, [])
 
-  // function generateDays(numDays, start_date)
-  //   //create days here
-  //   //for loop for number of days, pass the date for each one and empty strings for all other attributes
-  // end
+  function generateDays(tripLength, start_date) {
+    //create days here
+    //for loop for number of days, pass the date for each one and empty strings for all other attributes
+    const days = []
+    for (let i = 0; i < tripLength; i++) {
+      days.push({
+        day: i + 1,
+        start_point: "",
+        end_point: "",
+        mileage: ""
+      })
+    }
+    console.log(days)
+    return days
+  }
 
   function createTrip(newTrip) {
     setAddingTrip(false)
@@ -32,8 +43,9 @@ function MyTrips( {user} ) {
     console.log(numDays)
     const tripLength = numDays + 1
     console.log(tripLength)
-    let tripID = 0
-    // newTrip.days = generateDays(numDays, trip.start_date)
+    // let tripID = 0
+    newTrip.days_attributes = generateDays(tripLength, newTrip.start_date)
+    console.log(newTrip)
     fetch('/trips', {
       method: "POST",
       headers: {
@@ -46,7 +58,7 @@ function MyTrips( {user} ) {
       setTrips([...trips, data])
       console.log(data)
       //this doesn't get set until after the next fetch (asynchronous? but why does the next fetch go faster?)
-      tripID = data.id
+      // tripID = data.id
       //need to setDays here too but data.days does not give the information in the exact way we want...
     })
     // console.log(tripID)
