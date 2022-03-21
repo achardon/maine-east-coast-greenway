@@ -23,6 +23,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
             #how do I automatically have the day be the correct one?? And also I need it to show up right away instead of after the refresh.
             trip.days.create(day: "1")
         end
+
+        for i in 0..num_days do
+            
+        end
+
         render json: trip, status: :created
     end
 

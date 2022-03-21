@@ -4,7 +4,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def index
-        render json: Day.all
+        days = Day.all
+        sorted_days = days.sort do |day|
+            day[:id]
+        end
+        render json: sorted_days
     end
 
     def show

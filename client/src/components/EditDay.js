@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
 
-    console.log(day)
+    // console.log(day)
     const [updatedDay, setUpdatedDay] = useState({
         id: day.id,
         day: day.day,
@@ -12,7 +12,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
         notes: day.notes
     })
 
-    console.log(updatedDay)
+    // console.log(updatedDay)
     
     function handleChange(e) {
         setUpdatedDay({...updatedDay, 

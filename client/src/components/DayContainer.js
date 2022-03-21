@@ -10,17 +10,17 @@ function DayContainer({ day, editDay }) {
   // Results below assume UTC timezone - your results may vary
 
   // Specify default date formatting for language (locale)
-  console.log(new Intl.DateTimeFormat("en-US").format(date));
+  // console.log(new Intl.DateTimeFormat("en-US").format(date));
   // expected output: "12/20/2020" --> why am I getting 12/19 in the console??
 
   const dateOfDay = new Date(day.day);
-  console.log(dateOfDay)
+  // console.log(dateOfDay)
   const currentDayOfMonth = dateOfDay.getUTCDate();
   const currentMonth = dateOfDay.getUTCMonth(); 
   const currentYear = dateOfDay.getUTCFullYear();
   const dateFormatted =
     currentMonth + 1 + "-" + currentDayOfMonth + "-" + currentYear;
-  console.log(dateFormatted)
+  // console.log(dateFormatted)
 
   // const usFormatter = new Intl.DateTimeFormat("en-US");
   // console.log(day.day);

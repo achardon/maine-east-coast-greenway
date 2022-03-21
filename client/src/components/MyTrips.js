@@ -20,8 +20,20 @@ function MyTrips( {user} ) {
       .then((data) => setDays(data));
   }, [])
 
+  // function generateDays(numDays, start_date)
+  //   //create days here
+  //   //for loop for number of days, pass the date for each one and empty strings for all other attributes
+  // end
+
   function createTrip(newTrip) {
     setAddingTrip(false)
+    console.log(newTrip.start_date)
+    const numDays = (Date.parse(newTrip.end_date) / 86400000) - (Date.parse(newTrip.start_date) / 86400000)
+    console.log(numDays)
+    const tripLength = numDays + 1
+    console.log(tripLength)
+    let tripID = 0
+    // newTrip.days = generateDays(numDays, trip.start_date)
     fetch('/trips', {
       method: "POST",
       headers: {
@@ -30,7 +42,37 @@ function MyTrips( {user} ) {
       body: JSON.stringify(newTrip)
     })
     .then(r => r.json())
-    .then(data => setTrips([...trips, data]))
+    .then(data => {
+      setTrips([...trips, data])
+      console.log(data)
+      //this doesn't get set until after the next fetch (asynchronous? but why does the next fetch go faster?)
+      tripID = data.id
+      //need to setDays here too but data.days does not give the information in the exact way we want...
+    })
+    // console.log(tripID)
+    // for (let i = 0; i < tripLength; i++) {
+    //   const date = newTrip.start_date 
+    //   console.log(i)
+    //   const newDay = {
+    //     day: date,
+    //     start_point: "",
+    //     end_point: "",
+    //     mileage: "",
+    //     trip_id: tripID
+    //   }
+    //   fetch("/days", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(newDay),
+    //   })
+    //     .then((r) => r.json())
+    //     .then((data) => {
+    //       console.log(data)
+    //       setDays([...days, data]);
+    //     });
+    // }
   }
 
   function handleCreateNewTrip() {
