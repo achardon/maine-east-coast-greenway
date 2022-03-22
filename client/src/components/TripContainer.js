@@ -43,7 +43,7 @@ function TripContainer( {trip, deleteTrip, editDay} ) {
             <th>Mileage</th>
           </tr>
         </thead>
-        <tbody>{trip.days.map((day) => <DayContainer key={day.id} day={day} editDay={editDay}/>)}</tbody>
+        <tbody>{trip.days.map((day) => <DayContainer key={day.id} trip_id={trip.id} day={day} editDay={editDay}/>)}</tbody>
       </Table>
     </div>
   );

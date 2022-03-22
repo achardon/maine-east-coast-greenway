@@ -110,10 +110,29 @@ function MyTrips( {user} ) {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data)
-        const updatedTrips = trips.map(trip => {
-          if (trip.id === data.trip_id) {
+        // console.log(data)
+        // debugger
+        const tripToUpdate = trips.find(trip => trip.id === updatedDay.trip_id) 
+
+        // console.log(tripToUpdate)
+
+        const updatedDays = tripToUpdate.days.map(day => {
+          if (day.id === data.id) {
+            // debugger
             return data
+          }
+          else {
+            return day
+          }
+        })
+
+        tripToUpdate.days = updatedDays
+
+        // console.log(tripToUpdate)
+
+        const updatedTrips = trips.map(trip => {
+          if (trip.id === tripToUpdate.id) {
+            return tripToUpdate
           }
           else {
             return trip

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
-function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
-
+function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }) {
+  // debugger
     // console.log(day)
     const [updatedDay, setUpdatedDay] = useState({
         id: day.id,
@@ -10,7 +10,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
         end_point: day.end_point,
         mileage: day.mileage,
         notes: day.notes,
-        trip_id: day.trip.id
+        trip_id: trip_id
     })
 
     // console.log(updatedDay)
