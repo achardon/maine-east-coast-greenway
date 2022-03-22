@@ -3,13 +3,27 @@ before_action :authorize
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
+    # def index
+    #     days = Day.all
+    #     sorted_days = days.sort do |day|
+    #         day[:id]
+    #     end
+    #     render json: Day.all
+    # end
+
     def index
-        days = Day.all
-        sorted_days = days.sort do |day|
-            day[:id]
+        if params[:trip_id]
+            trip = Trip.find(params[:trip_id])
+            days = trip.days
+            sorted_days = days.sort do |day|
+                day[:id]
+            end
+        else
+            render json: Day.all
         end
         render json: sorted_days
     end
+
 
     def show
         day = Day.find(params[:id])

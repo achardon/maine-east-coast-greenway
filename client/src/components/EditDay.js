@@ -9,7 +9,8 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode }) {
         start_point: day.start_point,
         end_point: day.end_point,
         mileage: day.mileage,
-        notes: day.notes
+        notes: day.notes,
+        trip_id: day.trip.id
     })
 
     // console.log(updatedDay)

@@ -8,16 +8,16 @@ function MyTrips( {user} ) {
 
   const [addingTrip, setAddingTrip] = useState(false)
   const [trips, setTrips] = useState([])
-  const [days, setDays] = useState([])
+  // const [days, setDays] = useState([])
 
   useEffect(() => {
     fetch('/trips')
     .then(r => r.json())
     .then(data => setTrips(data))
 
-     fetch("/days")
-      .then((r) => r.json())
-      .then((data) => setDays(data));
+    //  fetch("/days")
+    //   .then((r) => r.json())
+    //   .then((data) => setDays(data));
   }, [])
 
   function generateDays(tripLength, start_date) {
@@ -101,7 +101,7 @@ function MyTrips( {user} ) {
   }
 
   function editDay(updatedDay) {
-    fetch(`/days/${updatedDay.id}`, {
+    fetch(`/trips/${updatedDay.trip_id}/days/${updatedDay.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -111,15 +111,15 @@ function MyTrips( {user} ) {
       .then((r) => r.json())
       .then((data) => {
         console.log(data)
-        const updatedDays = days.map(d => {
-          if (d.id === data.id) {
+        const updatedTrips = trips.map(trip => {
+          if (trip.id === data.trip_id) {
             return data
           }
           else {
-            return d
+            return trip
           }
         })
-        setDays(updatedDays)
+        setTrips(updatedTrips)
       });
   }
 
@@ -141,7 +141,7 @@ function MyTrips( {user} ) {
             trip={trip}
             deleteTrip={deleteTrip}
             editDay={editDay}
-            days={days.filter((d) => d.trip.id === trip.id)}
+            // days={days.filter((d) => d.trip.id === trip.id)}
           />
         ))
       ) : (

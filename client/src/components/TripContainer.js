@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import EditDay from './EditDay';
 
 
-function TripContainer( {trip, days, deleteTrip, editDay} ) {
+function TripContainer( {trip, deleteTrip, editDay} ) {
 
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
@@ -43,7 +43,7 @@ function TripContainer( {trip, days, deleteTrip, editDay} ) {
             <th>Mileage</th>
           </tr>
         </thead>
-        <tbody>{days.map((day) => <DayContainer key={day.id} day={day} editDay={editDay}/>)}</tbody>
+        <tbody>{trip.days.map((day) => <DayContainer key={day.id} day={day} editDay={editDay}/>)}</tbody>
       </Table>
     </div>
   );

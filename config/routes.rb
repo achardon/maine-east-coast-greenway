@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :days
-  resources :trips
+  resources :trips do
+    resources :days
+  end
   # resources :attractions
   resources :accommodations, only: [:index]
   resources :places, only: [:index]
