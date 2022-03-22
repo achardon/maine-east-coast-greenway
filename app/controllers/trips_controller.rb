@@ -43,7 +43,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     private
 
     def trip_params
-        params.permit(:name, :user_id, :start_date, :end_date, :days_attributes)
+        params.permit(:name, :user_id, :start_date, :end_date, days_attributes: [:name, :start_point, :end_point, :mileage])
     end
 
     def record_not_found
