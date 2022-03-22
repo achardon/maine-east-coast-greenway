@@ -9,7 +9,7 @@ function NewTripForm( { createTrip } ) {
         name: "",
         start_date: "",
         end_date: "",
-        days_attributes: []
+        days: []
     })
 
     function handleChange(e) {

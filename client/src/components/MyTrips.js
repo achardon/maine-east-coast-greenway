@@ -44,14 +44,19 @@ function MyTrips( {user} ) {
     const tripLength = numDays + 1
     console.log(tripLength)
     // let tripID = 0
-    newTrip.days_attributes = generateDays(tripLength, newTrip.start_date)
+    newTrip.days = generateDays(tripLength, newTrip.start_date)
     console.log(newTrip)
     fetch('/trips', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newTrip)
+      body: JSON.stringify({
+        name: newTrip.name,
+        start_date: newTrip.start_date,
+        end_date: newTrip.end_date, 
+        days_attributes: newTrip.days
+      })
     })
     .then(r => r.json())
     .then(data => {

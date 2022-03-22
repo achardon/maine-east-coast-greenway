@@ -15,13 +15,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         if params[:trip_id]
             trip = Trip.find(params[:trip_id])
             days = trip.days
-            sorted_days = days.sort do |day|
-                day[:id]
+            sorted_days = days.sort_by do |day|
+                day.id
             end
+            byebug
+            render json: sorted_days
         else
             render json: Day.all
         end
-        render json: sorted_days
     end
 
 
