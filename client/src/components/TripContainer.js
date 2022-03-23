@@ -27,6 +27,7 @@ function TripContainer( {trip, deleteTrip, editDay} ) {
         // console.log(date)
         const dateFormatted = date.toDateString()
 
+
   return (
     <div style={{ padding: "40px" }}>
       <h3>{trip.name}</h3>

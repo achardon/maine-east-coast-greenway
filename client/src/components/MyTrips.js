@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import NewTripForm from './NewTripForm'
 import TripContainer from './TripContainer'
+import moment from 'moment'
 
 function MyTrips( {user} ) {
 
@@ -22,15 +23,25 @@ function MyTrips( {user} ) {
 
   function generateDays(tripLength, start_date) {
     //create days here
-    //for loop for number of days, pass the date for each one and empty strings for all other attributes
+    const currentDay = new Date(start_date)
+    const nextDay = new Date(start_date);
+    // nextDay.setDate(currentDay.getDate() + 1)
+    // console.log(currentDay)
+    // console.log(nextDay)
+    // console.log(moment(start_date).format("MMMM Do YYYY"));
     const days = []
+    // const lengthArr = (Date.parse(start_date))..(Date.parse(end_date))
     for (let i = 0; i < tripLength; i++) {
+      //adding 2 below because otherwise date is off by two days... something to do with UTC probably
+      const dayToAdd = nextDay.setDate(currentDay.getDate() + i + 2)
+      // console.log(dayToAdd)
+      // console.log(nextDay.setDate(currentDay.getDate() + 1));
       days.push({
-        day: i + 1,
+        day: moment(dayToAdd).format("dddd, MMMM Do YYYY"),
         start_point: "",
         end_point: "",
-        mileage: ""
-      })
+        mileage: "",
+      });
     }
     console.log(days)
     return days

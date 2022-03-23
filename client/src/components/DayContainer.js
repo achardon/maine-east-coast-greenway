@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import Day from './Day';
 import EditDay from './EditDay';
+import moment from 'moment';
 
 function DayContainer({ trip_id, day, editDay }) {
   const [editMode, setEditMode] = useState(false);
   // debugger;
+
 
   //the next few lines from MDN
   const date = new Date(Date.UTC(2020, 11, 20, 3, 23, 16, 738));
@@ -37,7 +39,7 @@ function DayContainer({ trip_id, day, editDay }) {
         <EditDay
           day={day}
           trip_id={trip_id}
-          dateFormatted={dateFormatted}
+          dateFormatted={moment(day.day).format("ddd - MM/D/YYYY")}
           editDay={editDay}
           editMode={editMode}
           setEditMode={setEditMode}
@@ -46,7 +48,7 @@ function DayContainer({ trip_id, day, editDay }) {
         <Day
           day={day}
           trip_id={trip_id}
-          dateFormatted={dateFormatted}
+          dateFormatted={moment(day.day).format("ddd - MM/D/YYYY")}
           changeToEditMode={changeToEditMode}
         />
       )}

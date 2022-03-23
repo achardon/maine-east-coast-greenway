@@ -23,7 +23,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
     
     function handleEdit(updatedDay) {
         editDay(updatedDay)
-        setEditMode(!editMode);
+        setEditMode(editMode => !editMode);
     }
 
   return (
