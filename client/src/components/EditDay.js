@@ -30,13 +30,35 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
     <tr>
       <td>{dateFormatted}</td>
       <td>
-        <input value={updatedDay.start_point} name="start_point" onChange={handleChange} />
+        <input
+          value={updatedDay.start_point}
+          name="start_point"
+          onChange={handleChange}
+        />
       </td>
       <td>
-        <input value={updatedDay.end_point} name="end_point" onChange={handleChange} />
+        <input
+          value={updatedDay.end_point}
+          name="end_point"
+          onChange={handleChange}
+        />
       </td>
       <td>
-        <input value={updatedDay.mileage} name="mileage" onChange={handleChange} />
+        <input
+          value={updatedDay.mileage}
+          name="mileage"
+          onChange={handleChange}
+        />
+        
+        {/* <button
+          class="btn btn-success btn-sm rounded-0"
+          type="button"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Edit"
+        >
+          <i class="fa fa-edit"></i>
+        </button> */}
       </td>
       <td>
         <button onClick={() => handleEdit(updatedDay)}>Done Editing</button>

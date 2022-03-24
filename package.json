@@ -11,6 +11,7 @@
         "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
     },
     "dependencies": {
-        "moment": "^2.29.1"
+        "moment": "^2.29.1",
+        "react-bootstrap-table2-editor": "^1.4.0"
     }
 }
