@@ -28,7 +28,15 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
 
   return (
     <tr>
-      <td>{dateFormatted}</td>
+      <td>
+        {dateFormatted}
+        <button
+          className="btn btn-success btn-sm rounded-0 m-1"
+          onClick={() => handleEdit(updatedDay)}
+        >
+          Done Editing
+        </button>
+      </td>
       <td>
         <input
           value={updatedDay.start_point}
@@ -49,7 +57,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
           name="mileage"
           onChange={handleChange}
         />
-        
+
         {/* <button
           class="btn btn-success btn-sm rounded-0"
           type="button"
@@ -59,9 +67,6 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         >
           <i class="fa fa-edit"></i>
         </button> */}
-      </td>
-      <td>
-        <button onClick={() => handleEdit(updatedDay)}>Done Editing</button>
       </td>
     </tr>
   );
