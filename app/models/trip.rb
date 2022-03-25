@@ -3,11 +3,9 @@ class Trip < ApplicationRecord
   has_many :days, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+  validates_date_of :start_date, before: :end_date
+  validates_date_of :start_date, after_or_equal_to: Time.now
 
   accepts_nested_attributes_for :days
-
-  # def create_trip_with_days(start_date, end_date)
-  #   #create days for each day here
-  # end
 
 end

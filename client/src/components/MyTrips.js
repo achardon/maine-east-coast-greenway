@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import NewTripForm from './NewTripForm'
 import TripContainer from './TripContainer'
 import moment from 'moment'
@@ -9,6 +10,8 @@ function MyTrips( {user} ) {
 
   const [addingTrip, setAddingTrip] = useState(false)
   const [trips, setTrips] = useState([])
+  const [errors, setErrors] = useState([])
+  const [showErrors, setShowErrors] = useState(true);
   // const [days, setDays] = useState([])
 
   useEffect(() => {
@@ -69,39 +72,23 @@ function MyTrips( {user} ) {
         days_attributes: newTrip.days
       })
     })
-    .then(r => r.json())
-    .then(data => {
-      setTrips([...trips, data])
-      console.log(data)
-      //this doesn't get set until after the next fetch (asynchronous? but why does the next fetch go faster?)
-      // tripID = data.id
-      //need to setDays here too but data.days does not give the information in the exact way we want...
+    .then(r => {
+      if (r.ok) {
+        r.json().then(data => {
+          setTrips([...trips, data])
+          console.log(data)
+        })
+      }
+      else {
+        r.json().then(error => {
+          setErrors(error.errors)
+          setShowErrors(true)
+        })
+      }
     })
-    // console.log(tripID)
-    // for (let i = 0; i < tripLength; i++) {
-    //   const date = newTrip.start_date 
-    //   console.log(i)
-    //   const newDay = {
-    //     day: date,
-    //     start_point: "",
-    //     end_point: "",
-    //     mileage: "",
-    //     trip_id: tripID
-    //   }
-    //   fetch("/days", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(newDay),
-    //   })
-    //     .then((r) => r.json())
-    //     .then((data) => {
-    //       console.log(data)
-    //       setDays([...days, data]);
-    //     });
-    // }
   }
+
+  console.log(errors)
 
   function handleCreateNewTrip() {
     setAddingTrip(!addingTrip)
@@ -167,6 +154,22 @@ function MyTrips( {user} ) {
           <Button onClick={handleCreateNewTrip}>Create New Trip</Button>
         )}
         {addingTrip ? <NewTripForm createTrip={createTrip} /> : null}
+      </div>
+
+      <div>
+          {errors && showErrors ? errors.map(error => {
+            return (
+              <Alert
+                variant="danger"
+                key={error}
+                onClose={() => setShowErrors(false)}
+                dismissible
+              >
+                <p>{error}</p>
+              </Alert>
+            ); })
+            : null}
+          
       </div>
 
       {trips.length > 0 ? (
