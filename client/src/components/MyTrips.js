@@ -88,8 +88,6 @@ function MyTrips( {user} ) {
     })
   }
 
-  console.log(errors)
-
   function handleCreateNewTrip() {
     setAddingTrip(!addingTrip)
   }

@@ -72,4 +72,6 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
   );
 }
 
+//Can I add an onClick for the 'enter' key for the edit funciton so you can just click enter instead of 'done editing'?
+
 export default EditDay
