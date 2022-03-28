@@ -42,6 +42,8 @@ function TripContainer( {trip, deleteTrip, editDay} ) {
             <th>Start Point</th>
             <th>End Point</th>
             <th>Mileage</th>
+            <th>Accommodations</th>
+            <th>Notes</th>
           </tr>
         </thead>
         <tbody>{trip.days.map((day) => <DayContainer key={day.id} trip_id={trip.id} day={day} editDay={editDay}/>)}</tbody>

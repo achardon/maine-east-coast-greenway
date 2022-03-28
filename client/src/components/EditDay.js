@@ -10,6 +10,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         end_point: day.end_point,
         mileage: day.mileage,
         notes: day.notes,
+        accommodations: day.accommodations,
         trip_id: trip_id
     })
 
@@ -67,6 +68,20 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         >
           <i class="fa fa-edit"></i>
         </button> */}
+      </td>
+      <td>
+        <input
+          value={updatedDay.accommodations}
+          name="accommodations"
+          onChange={handleChange}
+        />
+      </td>
+      <td>
+        <input
+          value={updatedDay.notes}
+          name="notes"
+          onChange={handleChange}
+        />
       </td>
     </tr>
   );

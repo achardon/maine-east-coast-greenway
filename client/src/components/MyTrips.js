@@ -44,6 +44,8 @@ function MyTrips( {user} ) {
         start_point: "",
         end_point: "",
         mileage: 0,
+        accommodations: "",
+        notes: ""
       });
     }
     console.log(days)
