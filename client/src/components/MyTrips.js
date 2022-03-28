@@ -43,7 +43,7 @@ function MyTrips( {user} ) {
         day: moment(dayToAdd).format("dddd, MMMM Do YYYY"),
         start_point: "",
         end_point: "",
-        mileage: "",
+        mileage: 0,
       });
     }
     console.log(days)
