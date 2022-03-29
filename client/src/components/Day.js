@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 function Day( {day, dateFormatted, changeToEditMode} ) {
   // const myEventDate = new Date("Aug 10 2020 08:00:00 PDT");
   //below will be displayed in the time zone of the computer you are on
   // console.log(myEventDate.toString())
+    
+  
 
 
     return (

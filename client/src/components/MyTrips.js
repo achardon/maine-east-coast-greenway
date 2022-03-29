@@ -6,7 +6,7 @@ import NewTripForm from './NewTripForm'
 import TripContainer from './TripContainer'
 import moment from 'moment'
 
-function MyTrips( {user} ) {
+function MyTrips( {user, places} ) {
 
   const [addingTrip, setAddingTrip] = useState(false)
   const [trips, setTrips] = useState([])
@@ -177,7 +177,7 @@ function MyTrips( {user} ) {
             trip={trip}
             deleteTrip={deleteTrip}
             editDay={editDay}
-            // days={days.filter((d) => d.trip.id === trip.id)}
+            places={places}
           />
         ))
       ) : (
