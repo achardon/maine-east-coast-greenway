@@ -91,8 +91,15 @@ function MyTrips( {user} ) {
   }
 
   function handleCreateNewTrip() {
-    setAddingTrip(!addingTrip)
+    if (user) {
+        setAddingTrip(!addingTrip)
+    }
+    else {
+      setShowErrors(true)
+      setErrors(["You need to be logged in to use this feature."])
+    }
   }
+
 
   function deleteTrip(trip) {
     console.log('delete trip')

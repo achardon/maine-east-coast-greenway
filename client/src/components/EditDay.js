@@ -35,7 +35,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
           className="btn btn-success btn-sm rounded-0 m-1"
           onClick={() => handleEdit(updatedDay)}
         >
-          Done Editing
+          Save
         </button>
       </td>
       <td>

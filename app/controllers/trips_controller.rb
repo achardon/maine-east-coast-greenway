@@ -17,14 +17,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         user_id = session[:user_id]
         user = User.find(user_id)
         trip = user.trips.create!(trip_params)
-        # convert diff of datetimes to number of days by converting datetimes to days (24 hours*60 minutes*60 seconds)
-        # num_days = ((trip.end_date - trip.start_date) / 86400).to_i + 1
-        # num_days.times do |t|
-        #     #how do I automatically have the day be the correct one?? And also I need it to show up right away instead of after the refresh.
-        #     trip.days.create(day: "1")
-        # end
-        # byebug
-
         render json: trip, status: :created
     end
 
