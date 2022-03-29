@@ -34,20 +34,30 @@ function TripContainer( {trip, deleteTrip, editDay} ) {
       <Button onClick={() => deleteTrip(trip)} variant="danger" size="sm">
         Delete Trip
       </Button>
-
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Start Point</th>
-            <th>End Point</th>
-            <th>Mileage</th>
-            <th>Accommodations</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>{trip.days.map((day) => <DayContainer key={day.id} trip_id={trip.id} day={day} editDay={editDay}/>)}</tbody>
-      </Table>
+      <div style={{ padding: "20px" }}>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Start Point</th>
+              <th>End Point</th>
+              <th>Mileage</th>
+              <th>Accommodations</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {trip.days.map((day) => (
+              <DayContainer
+                key={day.id}
+                trip_id={trip.id}
+                day={day}
+                editDay={editDay}
+              />
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 }

@@ -37,7 +37,6 @@ function Login( { user, setUser } ) {
     .then(r => {
       if (r.ok) {
         r.json().then(data => {
-          console.log(data)
           setUser(data)
           setForm({
             username: "",

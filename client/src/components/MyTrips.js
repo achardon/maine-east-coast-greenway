@@ -48,20 +48,14 @@ function MyTrips( {user} ) {
         notes: ""
       });
     }
-    console.log(days)
     return days
   }
 
   function createTrip(newTrip) {
     setAddingTrip(false)
-    console.log(newTrip.start_date)
     const numDays = (Date.parse(newTrip.end_date) / 86400000) - (Date.parse(newTrip.start_date) / 86400000)
-    console.log(numDays)
     const tripLength = numDays + 1
-    console.log(tripLength)
-    // let tripID = 0
     newTrip.days = generateDays(tripLength, newTrip.start_date)
-    console.log(newTrip)
     fetch('/trips', {
       method: "POST",
       headers: {
@@ -78,7 +72,6 @@ function MyTrips( {user} ) {
       if (r.ok) {
         r.json().then(data => {
           setTrips([...trips, data])
-          console.log(data)
         })
       }
       else {
@@ -102,8 +95,6 @@ function MyTrips( {user} ) {
 
 
   function deleteTrip(trip) {
-    console.log('delete trip')
-    console.log(trip)
     fetch(`/trips/${trip.id}`, {
       method: "DELETE"
     })
@@ -192,6 +183,14 @@ function MyTrips( {user} ) {
       ) : (
         <h2>You have no trips yet.</h2>
       )}
+
+      <h5>
+        Need help planning your trip?  
+      </h5>
+      
+      <p>
+        Check out <a href="https://map.greenway.org/">this map tool</a> provided by the East Coast Greenway Alliance.
+      </p>
     </Container>
   );
 }
