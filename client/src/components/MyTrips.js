@@ -86,6 +86,7 @@ function MyTrips( {user, places} ) {
   function handleCreateNewTrip() {
     if (user) {
         setAddingTrip(!addingTrip)
+        setShowErrors(false)
     }
     else {
       setShowErrors(true)
