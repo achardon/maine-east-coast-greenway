@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,6 +13,10 @@ function Signup( {setUser} ) {
       password: "",
       password_confirmation: ""
     });
+
+    const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(true);
+
 
   let navigate = useNavigate();
 
@@ -40,7 +45,8 @@ function Signup( {setUser} ) {
         navigate(`/`);
       } 
       else {
-        r.json().then(error => alert(error.errors))
+        r.json().then(error => setErrors(error.errors))
+        setShowErrors(true)
       }
     })
   }
@@ -81,11 +87,28 @@ function Signup( {setUser} ) {
             value={form.password_confirmation}
           />
         </Form.Group>
+
+        <div>
+          {errors && showErrors
+            ? errors.map((error) => {
+                return (
+                  <Alert
+                    variant="danger"
+                    key={error}
+                    onClose={() => setShowErrors(false)}
+                    dismissible
+                  >
+                    <p>{error}</p>
+                  </Alert>
+                );
+              })
+            : null}
+        </div>
+
         <Button variant="primary" type="submit">
           Create Account
         </Button>
       </Form>
-
     </Container>
   );
 }

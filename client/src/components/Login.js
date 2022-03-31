@@ -12,6 +12,10 @@ function Login( { user, setUser } ) {
     username: '',
     password: ''
   })
+  
+  const [errors, setErrors] = useState([])
+  const [showErrors, setShowErrors] = useState(true);
+  
   let navigate = useNavigate()
 
   function handleCreateAccount() {
@@ -49,7 +53,8 @@ function Login( { user, setUser } ) {
         r.json().then(error => {
           //this should be in JSX, need state to say if error message should be displayed.
           // return <Alert variant={'danger'}>Test</Alert>
-          alert(error.error)
+          setErrors([error.error])
+          setShowErrors(true)
         })
       }
     })
@@ -89,11 +94,29 @@ function Login( { user, setUser } ) {
             value={form.password}
           />
         </Form.Group>
+      <div>
+        {errors && showErrors
+          ? errors.map((error) => {
+              return (
+                <Alert
+                  variant="danger"
+                  key={error}
+                  onClose={() => setShowErrors(false)}
+                  dismissible
+                >
+                  <p>{error}</p>
+                </Alert>
+              );
+            })
+          : null}
+      </div>
         <Button variant="primary" type="submit">
           Log In
         </Button>
-      {/* <Alert variant={"danger"}>Test</Alert> */}
+        {/* <Alert variant={"danger"}>Test</Alert> */}
       </Form>
+
+
       <Container style={{ padding: "40px" }} className="text-center">
         <h3 style={{ padding: "10px" }}>Don't have an account?</h3>
         <Button onClick={handleCreateAccount} variant="info">

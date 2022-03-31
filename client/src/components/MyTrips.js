@@ -12,7 +12,6 @@ function MyTrips( {user, places} ) {
   const [trips, setTrips] = useState([])
   const [errors, setErrors] = useState([])
   const [showErrors, setShowErrors] = useState(true);
-  // const [days, setDays] = useState([])
 
   useEffect(() => {
     fetch('/trips')
