@@ -93,7 +93,6 @@ function MyTrips( {user, places} ) {
     }
   }
 
-
   function deleteTrip(trip) {
     fetch(`/trips/${trip.id}`, {
       method: "DELETE"

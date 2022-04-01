@@ -53,12 +53,20 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         />
       </td>
       <td>
-        {day.mileage}
-        {/* <input
+        {/* {day.mileage > 0 ? (
+          day.mileage
+        ) : (
+          <input
+            value={updatedDay.mileage}
+            name="mileage"
+            onChange={handleChange}
+          />
+        )} */}
+        <input
           value={updatedDay.mileage}
           name="mileage"
           onChange={handleChange}
-        /> */}
+        />
 
         {/* <button
           class="btn btn-success btn-sm rounded-0"
@@ -78,11 +86,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         />
       </td>
       <td>
-        <input
-          value={updatedDay.notes}
-          name="notes"
-          onChange={handleChange}
-        />
+        <input value={updatedDay.notes} name="notes" onChange={handleChange} />
       </td>
     </tr>
   );

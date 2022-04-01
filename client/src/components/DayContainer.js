@@ -9,12 +9,12 @@ function DayContainer({ trip_id, day, editDay, places }) {
   function calculateMileage() {
     const start = places.find((place) => day.start_point.toLowerCase().includes(place.name.toLowerCase()));
     const end = places.find((place) => day.end_point.toLowerCase().includes(place.name.toLowerCase()));
-    if (start && end) {
-      const mileage = end.location - start.location
-      return mileage
+    if (day.mileage === 0 && start && end) {
+      const mileage = end.location - start.location;
+      return mileage;
     }
     else {
-      return 0
+      return day.mileage
     }
   }
   

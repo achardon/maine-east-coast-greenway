@@ -94,28 +94,27 @@ function Login( { user, setUser } ) {
             value={form.password}
           />
         </Form.Group>
-      <div>
-        {errors && showErrors
-          ? errors.map((error) => {
-              return (
-                <Alert
-                  variant="danger"
-                  key={error}
-                  onClose={() => setShowErrors(false)}
-                  dismissible
-                >
-                  <p>{error}</p>
-                </Alert>
-              );
-            })
-          : null}
-      </div>
+        <div>
+          {errors && showErrors
+            ? errors.map((error) => {
+                return (
+                  <Alert
+                    variant="danger"
+                    key={error}
+                    onClose={() => setShowErrors(false)}
+                    dismissible
+                  >
+                    <p>{error}</p>
+                  </Alert>
+                );
+              })
+            : null}
+        </div>
         <Button variant="primary" type="submit">
           Log In
         </Button>
         {/* <Alert variant={"danger"}>Test</Alert> */}
       </Form>
-
 
       <Container style={{ padding: "40px" }} className="text-center">
         <h3 style={{ padding: "10px" }}>Don't have an account?</h3>
