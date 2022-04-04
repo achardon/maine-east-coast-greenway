@@ -26,7 +26,7 @@ function PlaceCard( { place, accommodations } ) {
       <Card style={{ width: "30rem" }} className="m-3">
         <Card.Body>
           <Card.Title>{place.name}</Card.Title>
-          <Card.Img variant="top" src={place.image} />
+          <Card.Img variant="top" src={place.image} height="280px" />
           <Card.Text>{place.description}</Card.Text>
           <Card.Text>Mileage Marker: {place.location} miles</Card.Text>
           <Button onClick={handleClick} variant="primary">
@@ -38,11 +38,12 @@ function PlaceCard( { place, accommodations } ) {
               {accomms.map((a) => (
                 <li key={a.id}>{a.name}</li>
               ))}
-              {accomms.length === 0? <li>No information available</li> : null}
+              {accomms.length === 0 ? <li>No information available</li> : null}
               <strong>Breweries in this Town:</strong>
               {breweries.map((b) => (
                 <li key={b.id}>{b.name}</li>
               ))}
+              {breweries.length === 0 ? <li>No information available</li> : null}
             </Card.Text>
           ) : null}
         </Card.Body>

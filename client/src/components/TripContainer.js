@@ -1,27 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Table from "react-bootstrap/Table";
 import DayContainer from './DayContainer';
 import Button from "react-bootstrap/Button";
-import EditDay from './EditDay';
 
 function TripContainer({ trip, deleteTrip, editDay, places }) {
   
-  //calculate total mileage for trip
-  function calculateTotal() {
-    const tripDays = trip.days;
-    console.log(tripDays);
-    let total = 0;
-    tripDays.map((day) => {
-      total = total + day.mileage;
-    });
-    return total;
-  }
+  //for total mileage, should I use state or .reduce or useEffect of a regular funtion?  It is mostly working now but I sometimes get weird behavior where it doesn't update and other times when it does...?
+  
+  // const [totalMileage, setTotalMileage] = useState(0)
+
+  //   useEffect(() => {
+  //     const total = calculateTotal()
+  //     console.log(total)
+  //   }, [])
+
+  // //calculate total mileage for trip
+  // function calculateTotal() {
+  //   const tripDays = trip.days;
+  //   // console.log(tripDays);
+  //   let total = 0;
+  //   tripDays.map((day) => {
+  //     total = total + day.mileage;
+  //   });
+  //   return total;
+  // }
   // console.log(arrOfMileages)
-  // const initialValue = 0
-  // const total = tripDays.reduce(function(previousValue, currentValue) {
-  //   return {mileage: previousValue.mileage + currentValue.mileage}, initialValue
-  // })
-  const totalMileage = 100;
+  const tripDays = trip.days
+  const initialValue = 0
+  const total = tripDays.reduce((previousValue, currentValue) => previousValue + currentValue.mileage, initialValue)
+  console.log(total)
 
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
@@ -46,7 +53,7 @@ function TripContainer({ trip, deleteTrip, editDay, places }) {
   return (
     <div style={{ padding: "40px" }}>
       <h3>{trip.name}</h3>
-      <h5>Total Mileage: {calculateTotal()} miles</h5>
+      <h5>Total Mileage: {total} miles</h5>
       <Button onClick={() => deleteTrip(trip)} variant="danger" size="sm">
         Delete Trip
       </Button>

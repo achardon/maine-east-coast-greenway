@@ -12,6 +12,7 @@ function DayContainer({ trip_id, day, editDay, places }) {
     if (day.mileage === 0 && start && end) {
       const mileage = end.location - start.location;
       return mileage;
+      //patch request to days to update mileage?
     }
     else {
       return day.mileage

@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :authorize
+before_action :set_trip, only: [:destroy]
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
@@ -27,12 +28,16 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def destroy
-        trip = Trip.find(params[:id])
-        trip.destroy
+        # trip = Trip.find(params[:id])
+        @trip.destroy
         head :no_content
     end
 
     private
+
+    def set_trip
+        @trip = Trip.find(params[:id])
+    end
 
     def trip_params
         params.permit(:name, :user_id, :start_date, :end_date, days_attributes: [:day, :start_point, :end_point, :mileage, :accommodations, :notes])

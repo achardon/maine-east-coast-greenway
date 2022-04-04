@@ -23,6 +23,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
     }
     
     function handleEdit(updatedDay) {
+      //calculate mileage
         editDay(updatedDay)
         setEditMode(editMode => !editMode);
     }

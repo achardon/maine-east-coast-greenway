@@ -18,7 +18,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
             sorted_days = days.sort_by do |day|
                 day.id
             end
-            byebug
             render json: sorted_days
         else
             render json: Day.all
