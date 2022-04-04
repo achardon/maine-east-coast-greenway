@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }) {
+function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, places }) {
   // debugger
     // console.log(day)
     const [updatedDay, setUpdatedDay] = useState({
@@ -22,8 +22,38 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id }
         })
     }
     
+    function calculateMileage() {
+      const start = places.find((place) =>
+        updatedDay.start_point.toLowerCase().includes(place.name.toLowerCase())
+      );
+      const end = places.find((place) =>
+        updatedDay.end_point.toLowerCase().includes(place.name.toLowerCase())
+      );
+      if (updatedDay.mileage === 0 && start && end) {
+        const mileage = end.location - start.location;
+        return mileage;
+      } 
+      else if (updatedDay.start_point !== day.start_point || updatedDay.end_point !== updatedDay.end_point) {
+        if (start && end) {
+          const mileage = end.location - start.location;
+          return mileage;
+        }
+        else {
+          return 0
+        }
+      } 
+      else if (!start || !end) {
+        return 0;
+      } else {
+        return updatedDay.mileage;
+      }
+    }
+
     function handleEdit(updatedDay) {
       //calculate mileage
+        console.log(updatedDay)  
+        updatedDay.mileage = calculateMileage()
+        console.log(updatedDay)
         editDay(updatedDay)
         setEditMode(editMode => !editMode);
     }

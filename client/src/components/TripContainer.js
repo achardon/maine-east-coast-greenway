@@ -28,7 +28,7 @@ function TripContainer({ trip, deleteTrip, editDay, places }) {
   const tripDays = trip.days
   const initialValue = 0
   const total = tripDays.reduce((previousValue, currentValue) => previousValue + currentValue.mileage, initialValue)
-  console.log(total)
+  // console.log(total)
 
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
