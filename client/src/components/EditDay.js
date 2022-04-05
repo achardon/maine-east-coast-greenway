@@ -39,15 +39,15 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
           return mileage;
         }
         else {
-          return 0
+          return updatedDay.mileage
         }
       } 
-      else if (!start || !end) {
-        return 0;
-      } else {
+      else {
         return updatedDay.mileage;
       }
     }
+
+    console.log(updatedDay)
 
     function handleEdit(updatedDay) {
       //calculate mileage
