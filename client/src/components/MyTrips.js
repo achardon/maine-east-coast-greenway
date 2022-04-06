@@ -71,7 +71,7 @@ function MyTrips( {user, places} ) {
       if (r.ok) {
         r.json().then(data => {
           setTrips([...trips, data])
-          console.log(data)
+          // console.log(data)
         })
       }
       else {

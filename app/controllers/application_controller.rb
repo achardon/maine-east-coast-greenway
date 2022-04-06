@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
+    private
     #add helper method to find user current_user 
     def set_user
       #so that the database doesn't query for the user each time
