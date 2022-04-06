@@ -49,7 +49,8 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
 
     function handleEdit(updatedDay) {
       //calculate mileage
-        updatedDay.mileage = calculateMileage()
+      console.log("from editDay component" + updatedDay)
+      updatedDay.mileage = calculateMileage()
         editDay(updatedDay)
         setEditMode(editMode => !editMode);
     }

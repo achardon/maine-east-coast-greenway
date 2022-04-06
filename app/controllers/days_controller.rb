@@ -38,7 +38,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def update
         day = Day.find(params[:id])
-        day.update(day_params)
+        day.update!(day_params)
         render json: day
     end
 

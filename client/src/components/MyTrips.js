@@ -71,6 +71,7 @@ function MyTrips( {user, places} ) {
       if (r.ok) {
         r.json().then(data => {
           setTrips([...trips, data])
+          console.log(data)
         })
       }
       else {
@@ -101,6 +102,7 @@ function MyTrips( {user, places} ) {
   }
 
   function editDay(updatedDay) {
+    console.log(updatedDay)
     fetch(`/trips/${updatedDay.trip_id}/days/${updatedDay.id}`, {
       method: "PATCH",
       headers: {
@@ -112,6 +114,7 @@ function MyTrips( {user, places} ) {
       .then((data) => {
         // console.log(data)
         // debugger
+        console.log(data)
         const tripToUpdate = trips.find(trip => trip.id === updatedDay.trip_id) 
 
         // console.log(tripToUpdate)

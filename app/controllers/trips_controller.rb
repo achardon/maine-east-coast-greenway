@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 before_action :authorize
-before_action :set_trip, only: [:destroy]
+before_action :set_trip, only: [:destroy, :update]
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
@@ -22,8 +22,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     end
 
     def update
-        trip = Trip.find(params[:id])
-        trip.update(trip_params)
+        # trip = Trip.find(params[:id])
+        @trip.update!(trip_params)
         render json: trip
     end
 

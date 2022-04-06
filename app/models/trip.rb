@@ -1,4 +1,5 @@
 class Trip < ApplicationRecord
+
   belongs_to :user
   has_many :days, dependent: :destroy
 
@@ -9,3 +10,5 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :days
 
 end
+
+
