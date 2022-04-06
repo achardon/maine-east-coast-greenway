@@ -1,23 +1,23 @@
 class TripsController < ApplicationController
 before_action :authorize
 before_action :set_trip, only: [:destroy, :update]
-rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+before_action :set_user, only: [:index, :create]
 
     def index
-        user = User.find(session[:user_id])
-        render json: user.trips
+        # user = User.find(session[:user_id])
+        render json: @user.trips
     end
 
+    #do I need this method?
     def show
         trip = Trip.find(params[:id])
         render json: trip
     end
 
     def create
-        user_id = session[:user_id]
-        user = User.find(user_id)
-        trip = user.trips.create!(trip_params)
+        # user_id = session[:user_id]
+        # user = User.find(user_id)
+        trip = @user.trips.create!(trip_params)
         render json: trip, status: :created
     end
 
@@ -41,18 +41,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def trip_params
         params.permit(:name, :user_id, :start_date, :end_date, days_attributes: [:day, :start_point, :end_point, :mileage, :accommodations, :notes])
-    end
-
-    def record_not_found
-        render json: {error: "Trip Not Found"}, status: :not_found
-    end
-
-    def record_invalid(invalid)
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    end
-
-    def authorize
-        return render json: {errors: "You must be logged in to create or edit a trip."}, status: :unauthorized unless session[:user_id]
     end
 
 end

@@ -1,7 +1,5 @@
 class DaysController < ApplicationController
 before_action :authorize
-rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     # def index
     #     days = Day.all
@@ -24,7 +22,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         end
     end
 
-
+    # do I need any of these??
     def show
         day = Day.find(params[:id])
         render json: day
@@ -32,7 +30,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def create
         day = Day.create(day_params)
-        # byebug
         render json: day, status: :created
     end
 
@@ -42,11 +39,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         render json: day
     end
 
-    def destroy
-        day = Day.find(params[:id])
-        day.destroy
-        head :no_content
-    end
+    # def destroy
+    #     day = Day.find(params[:id])
+    #     day.destroy
+    #     head :no_content
+    # end
 
     private
 
@@ -54,15 +51,4 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
         params.permit(:id, :day, :mileage, :notes, :accommodations, :start_point, :end_point, :trip_id)
     end
 
-    def record_not_found
-        render json: {error: "Not Found"}, status: :not_found
-    end
-
-    def record_invalid(invalid)
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    end
-
-    def authorize
-        return render json: {errors: "You must be logged in to use this feature."}, status: :unauthorized unless session[:user_id]
-    end
 end

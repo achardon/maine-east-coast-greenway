@@ -102,7 +102,7 @@ function MyTrips( {user, places} ) {
   }
 
   function editDay(updatedDay) {
-    console.log(updatedDay)
+    // console.log(updatedDay)
     fetch(`/trips/${updatedDay.trip_id}/days/${updatedDay.id}`, {
       method: "PATCH",
       headers: {
@@ -111,10 +111,11 @@ function MyTrips( {user, places} ) {
       body: JSON.stringify(updatedDay),
     })
       .then((r) => r.json())
+      // add if/then for r.ok or r.invalid
       .then((data) => {
         // console.log(data)
         // debugger
-        console.log(data)
+        // console.log(data)
         const tripToUpdate = trips.find(trip => trip.id === updatedDay.trip_id) 
 
         // console.log(tripToUpdate)

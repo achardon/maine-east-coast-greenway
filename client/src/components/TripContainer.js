@@ -4,9 +4,8 @@ import DayContainer from './DayContainer';
 import Button from "react-bootstrap/Button";
 
 function TripContainer({ trip, deleteTrip, editDay, places }) {
-  
   //for total mileage, should I use state or .reduce or useEffect of a regular funtion?  It is mostly working now but I sometimes get weird behavior where it doesn't update and other times when it does...?
-  
+
   // const [totalMileage, setTotalMileage] = useState(0)
 
   //   useEffect(() => {
@@ -25,10 +24,12 @@ function TripContainer({ trip, deleteTrip, editDay, places }) {
   //   return total;
   // }
   // console.log(arrOfMileages)
-  const tripDays = trip.days
-  const initialValue = 0
+
+  const tripDays = trip.days;
+  const initialValue = 0;
   const total = tripDays.reduce((previousValue, currentValue) => previousValue + currentValue.mileage, initialValue)
   // console.log(total)
+
 
   // Calculate milliseconds in a day
   const minute = 1000 * 60;
