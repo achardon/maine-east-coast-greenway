@@ -38,10 +38,16 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
           const mileage = end.location - start.location;
           return mileage;
         }
+        else if (updatedDay.mileage === "") {
+          return 0
+        }
         else {
           return updatedDay.mileage
         }
       } 
+      else if (updatedDay.mileage === "") {
+        return 0
+      }
       else {
         return updatedDay.mileage;
       }

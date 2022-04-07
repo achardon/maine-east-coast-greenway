@@ -73,15 +73,16 @@ function TripContainer({ trip, deleteTrip, editDay, places }) {
           <tbody>
             {trip.days.map((day) => (
               <DayContainer
-                key={day.id}
-                trip_id={trip.id}
-                day={day}
-                editDay={editDay}
-                places={places}
+              key={day.id}
+              trip_id={trip.id}
+              day={day}
+              editDay={editDay}
+              places={places}
               />
-            ))}
+              ))}
           </tbody>
         </Table>
+        <em>Click on any day to edit.</em>   
       </div>
     </div>
   );
