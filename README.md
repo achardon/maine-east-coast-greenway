@@ -4,9 +4,9 @@
 
 This app is for cyclists planning a trip on the Maine portion of the East Coast Greenway. Users can learn more about the route, explore the cities on the route, and plan their own customized trip where they can add start points, end points, mileage, accommodations, and notes. 
 
-It is currently deployed on [Heroku](https://maine-east-coast-greenway.herokuapp.com/)
+It is currently deployed on [Heroku](https://maine-east-coast-greenway.herokuapp.com/).
 
-You can check out a video of the usage [here](https://www.youtube.com/watch?v=qGITP4IaCdQ)
+You can check out a video of the usage [here](https://www.youtube.com/watch?v=qGITP4IaCdQ).
 
 ## Installation
 

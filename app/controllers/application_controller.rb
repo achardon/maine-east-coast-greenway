@@ -3,6 +3,12 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
+    def hello_world
+        session[:count] ||= 0
+        session[:count] = session[:count] + 1
+        render json: { count: session[:count] }
+    end
+    
     private
     #add helper method to find user current_user 
     def set_user
@@ -10,11 +16,6 @@ class ApplicationController < ActionController::API
       @user ||= User.find(session[:user_id])
     end
 
-    def hello_world
-        session[:count] ||= 0
-        session[:count] = session[:count] + 1
-        render json: { count: session[:count] }
-    end
 
     def record_not_found
         render json: {error: "Not Found"}, status: :not_found

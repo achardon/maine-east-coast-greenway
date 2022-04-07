@@ -27,17 +27,10 @@ function MyTrips( {user, places} ) {
     //create days here
     const currentDay = new Date(start_date)
     const nextDay = new Date(start_date);
-    // nextDay.setDate(currentDay.getDate() + 1)
-    // console.log(currentDay)
-    // console.log(nextDay)
-    // console.log(moment(start_date).format("MMMM Do YYYY"));
     const days = []
-    // const lengthArr = (Date.parse(start_date))..(Date.parse(end_date))
     for (let i = 0; i < tripLength; i++) {
       //adding 2 below because otherwise date is off by two days... something to do with UTC probably
       const dayToAdd = nextDay.setDate(currentDay.getDate() + i + 2)
-      // console.log(dayToAdd)
-      // console.log(nextDay.setDate(currentDay.getDate() + 1));
       days.push({
         day: moment(dayToAdd).format("dddd, MMMM Do YYYY"),
         start_point: "",
