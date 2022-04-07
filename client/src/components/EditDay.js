@@ -33,7 +33,7 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
         const mileage = end.location - start.location;
         return mileage;
       } 
-      else if (updatedDay.start_point !== day.start_point || updatedDay.end_point !== updatedDay.end_point) {
+      else if (updatedDay.start_point !== day.start_point || updatedDay.end_point !== day.end_point) {
         if (start && end) {
           const mileage = end.location - start.location;
           return mileage;
@@ -48,11 +48,10 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
     }
 
     function handleEdit(updatedDay) {
-      //calculate mileage
-      console.log("from editDay component" + updatedDay)
+      //calculate updated mileage
       updatedDay.mileage = calculateMileage()
-        editDay(updatedDay)
-        setEditMode(editMode => !editMode);
+      editDay(updatedDay)
+      setEditMode(editMode => !editMode);
     }
 
   return (
