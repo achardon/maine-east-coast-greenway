@@ -17,10 +17,6 @@ function MyTrips( {user, places} ) {
     fetch('/trips')
     .then(r => r.json())
     .then(data => setTrips(data))
-
-    //  fetch("/days")
-    //   .then((r) => r.json())
-    //   .then((data) => setDays(data));
   }, [])
 
   function generateDays(tripLength, start_date) {
