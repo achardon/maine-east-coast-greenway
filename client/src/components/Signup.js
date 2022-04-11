@@ -17,7 +17,6 @@ function Signup( {setUser} ) {
     const [errors, setErrors] = useState([]);
     const [showErrors, setShowErrors] = useState(true);
 
-
   let navigate = useNavigate();
 
   function handleSignIn() {

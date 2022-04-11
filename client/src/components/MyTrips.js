@@ -25,8 +25,9 @@ function MyTrips( {user, places} ) {
     const nextDay = new Date(start_date);
     const days = []
     for (let i = 0; i < tripLength; i++) {
-      //adding 2 below because otherwise date is off by two days... something to do with UTC probably
+      //adding 2 below because otherwise date is off by two days... has to do with JS using UTC as time zone even though my machine is on East Coast time
       const dayToAdd = nextDay.setDate(currentDay.getDate() + i + 2)
+      //push day into days array with empty strings for attributes (and 0 for mileage)
       days.push({
         day: moment(dayToAdd).format("dddd, MMMM Do YYYY"),
         start_point: "",
@@ -60,7 +61,6 @@ function MyTrips( {user, places} ) {
       if (r.ok) {
         r.json().then(data => {
           setTrips([...trips, data])
-          // console.log(data)
         })
       }
       else {
@@ -91,7 +91,6 @@ function MyTrips( {user, places} ) {
   }
 
   function editDay(updatedDay) {
-    // console.log(updatedDay)
     fetch(`/trips/${updatedDay.trip_id}/days/${updatedDay.id}`, {
       method: "PATCH",
       headers: {
@@ -100,29 +99,18 @@ function MyTrips( {user, places} ) {
       body: JSON.stringify(updatedDay),
     })
       .then((r) => r.json())
-      // add if/then for r.ok or r.invalid
+      // option: add if/then for r.ok or r.invalid (when entering non-integer for mileage)
       .then((data) => {
-        // console.log(data)
-        // debugger
-        // console.log(data)
         const tripToUpdate = trips.find(trip => trip.id === updatedDay.trip_id) 
-
-        // console.log(tripToUpdate)
-
         const updatedDays = tripToUpdate.days.map(day => {
           if (day.id === data.id) {
-            // debugger
             return data
           }
           else {
             return day
           }
         })
-
         tripToUpdate.days = updatedDays
-
-        // console.log(tripToUpdate)
-
         const updatedTrips = trips.map(trip => {
           if (trip.id === tripToUpdate.id) {
             return tripToUpdate
@@ -159,7 +147,6 @@ function MyTrips( {user, places} ) {
               </Alert>
             ); })
             : null}
-          
       </div>
 
       {trips.length > 0 ? (

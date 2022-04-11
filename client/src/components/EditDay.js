@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 
 function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, places }) {
-  // debugger
-    // console.log(day)
-    const [updatedDay, setUpdatedDay] = useState({
+
+  const [updatedDay, setUpdatedDay] = useState({
         id: day.id,
         day: day.day,
         start_point: day.start_point,
@@ -13,8 +12,6 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
         accommodations: day.accommodations,
         trip_id: trip_id
     })
-
-    // console.log(updatedDay)
     
     function handleChange(e) {
         setUpdatedDay({...updatedDay, 
@@ -54,7 +51,6 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
     }
 
     function handleEdit(updatedDay) {
-      //calculate updated mileage
       updatedDay.mileage = calculateMileage()
       editDay(updatedDay)
       setEditMode(editMode => !editMode);
@@ -86,30 +82,11 @@ function EditDay({ day, dateFormatted, editDay, editMode, setEditMode, trip_id, 
         />
       </td>
       <td>
-        {/* {day.mileage > 0 ? (
-          day.mileage
-        ) : (
-          <input
-            value={updatedDay.mileage}
-            name="mileage"
-            onChange={handleChange}
-          />
-        )} */}
         <input
           value={updatedDay.mileage}
           name="mileage"
           onChange={handleChange}
         />
-
-        {/* <button
-          class="btn btn-success btn-sm rounded-0"
-          type="button"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Edit"
-        >
-          <i class="fa fa-edit"></i>
-        </button> */}
       </td>
       <td>
         <input

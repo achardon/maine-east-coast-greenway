@@ -34,7 +34,6 @@ function NavHeader( {user, setUser} ) {
         </Nav>
 
         <Navbar.Collapse className="justify-content-end">
-          {/* need to eventually change this to show log in button when no one is logged in */}
           {user? <Navbar.Text>Signed in as: <a href="#login">{user.username}</a></Navbar.Text> : null}
           <div style={{padding: "10px"}}>
             {user? <Button onClick={handleLogOut}>Log Out</Button> : <Button onClick={handleLogIn}>Log In</Button>}

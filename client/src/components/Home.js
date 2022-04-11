@@ -11,8 +11,6 @@ function Home() {
         style={{ padding: "40px" }}
       />
       <h4>An app developed by Alessandra Chardon</h4>
-      {/* <h3>Purpose: CLAP Family Bike Trip 2022! </h3>
-              <p>Page Count: {count} </p> */}
     </div>
   );
 }

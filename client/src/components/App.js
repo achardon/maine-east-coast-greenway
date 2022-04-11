@@ -23,11 +23,13 @@ function App() {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
-    });
+    })
+
     //get array of all places
     fetch("/places")
     .then(r => r.json())
     .then(data => setPlaces(data))
+
     //get array of all accommodations
     fetch("/accommodations")
     .then((r) => r.json())
@@ -35,6 +37,7 @@ function App() {
 
   }, []);
 
+  //testing set up to make sure session is working 
   useEffect(() => {
     fetch ("/hello")
     .then(r => r.json())
