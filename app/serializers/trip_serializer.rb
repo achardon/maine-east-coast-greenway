@@ -4,7 +4,6 @@ class TripSerializer < ActiveModel::Serializer
   has_many :days
 
   def days
-    # eventually change to date instead of id
     object.days.order(id: :asc)
   end
 end
