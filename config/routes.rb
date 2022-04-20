@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :days, only: [:update]
   end
 
-  # resources :attractions
+  # resources :attractions, only: [:index]
   resources :accommodations, only: [:index]
   resources :places, only: [:index]
+  get '/places/sorted', to: 'places#sorted'
 
   # route to test your configuration
   get '/hello', to: 'application#hello_world'

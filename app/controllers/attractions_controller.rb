@@ -1,2 +1,3 @@
 class AttractionsController < ApplicationController
+
 end
