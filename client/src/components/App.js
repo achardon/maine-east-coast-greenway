@@ -7,6 +7,7 @@ import Explore from "./Explore";
 import MyTrips from "./MyTrips";
 import Login from "./Login";
 import Signup from "./Signup";
+import Stories from "./Stories";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/my_trips" element={<MyTrips user={user} places={places}/>}></Route>
           <Route path="/log_in" element={<Login user={user} setUser={setUser}/>}></Route>
           <Route path="/sign_up" element={<Signup setUser={setUser} />}></Route>
+          <Route path="/stories" element={<Stories />}></Route>
         </Routes>
 
     </div>

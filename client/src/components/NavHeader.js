@@ -31,6 +31,7 @@ function NavHeader( {user, setUser} ) {
           <Nav.Link href="about">About</Nav.Link>
           <Nav.Link href="explore">Explore</Nav.Link>
           <Nav.Link href="my_trips">My Trips</Nav.Link>
+          <Nav.Link href="stories">Stories</Nav.Link>
         </Nav>
 
         <Navbar.Collapse className="justify-content-end">
