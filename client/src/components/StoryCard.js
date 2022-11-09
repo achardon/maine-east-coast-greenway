@@ -29,6 +29,7 @@ function StoryCard( {story} ) {
                 "https://static.owayo-cdn.com/newhp/img/magazin/planningbiketrip/expert-tips-for-planning-your-bike-trip-670px.jpg"
               }
               height="280px"
+              alt="picture of bike"
             />
             <Card.Text>{story.narrative}</Card.Text>
             <Card.Text>
