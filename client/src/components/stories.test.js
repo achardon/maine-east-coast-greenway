@@ -8,3 +8,4 @@ test("displays the text 'stories'", () => {
    render(<Stories />);
 
    expect(screen.queryByText("Stories")).toBeInTheDocument();
+})

@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react'
 function Stories() {
 
   const [stories, setStories] = useState([])
+  const [time, setTime] = useState(0)
+  const [search, setSearch] = useState("")
+  const [filteredStories, setFilteredStories] = useState([])
 
   const sampleStories = [
     {id: 1, name: "Alessandra", date: "August 14, 2022", narrative: "This is day 1 of our wedding bike trip! Today we biked from Rye, NH to Kittery, ME. We got multiple family members involved and had 10 people riding out of the starting point. Beautiful day with a great lunch spot on the ocean eating huge sandwiches on rocks."},
@@ -18,15 +21,36 @@ function Stories() {
 
   useEffect(() => {
     setStories(sampleStories)
+    setFilteredStories(sampleStories)
   }, [])
 
+  //add timer
 
+  const x = setTimeout(() => setTime(time + 1), 1000)
+//   setInterval(() => setTime(time + 1), 1000);
+
+  if (time > 20) {
+      clearTimeout(x);
+  }
   //add a filter bar at the top for name, date, or keyword
+
+  function handleChange(e) {
+    setSearch(e.target.value)
+    const updatedStories = stories.filter(story => story.narrative.includes(e.target.value))
+    setFilteredStories(updatedStories)
+  }
 
   return (
     <Container style={{ padding: "40px" }} className="text-center">
       <h1>Stories</h1>
-      {stories.map((story) => {
+      <h3>{time}</h3>
+      <form>
+        <label>
+            Search...  
+        <input type="text" onChange={handleChange} value={search}></input>
+        </label>
+      </form>
+      {filteredStories.map((story) => {
         return (
             <StoryCard story={story} key={story.id} />
         );
